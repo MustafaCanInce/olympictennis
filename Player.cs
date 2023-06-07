@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour{
     public Transform aimTarget; // The goal at which we intend to land the ball.
+
+    
+
     float speed = 3f; // Move speed.
     float force = 10; // Ball impact force.
 
@@ -21,9 +24,11 @@ public class Player : MonoBehaviour{
         aimTargetInitialPosition = aimTarget.position; // Set the initial position of the aim to the center (where it was placed in the editor).
         shotManager = GetComponent<ShotManager>(); // Accessing the ShotManager component.
         currentShot = shotManager.topSpin; // Setting the default shot to topspin.
+        
     }
 
     void Update(){
+        
         float h = Input.GetAxisRaw("Horizontal"); // Retrieve the horizontal axis of the keyboard.
         float v = Input.GetAxisRaw("Vertical"); // Retrieve the vertical axis of the keyboard.
 
