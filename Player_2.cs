@@ -9,7 +9,7 @@ public class Player_2 : MonoBehaviour{
 
     bool hitting; // value indicating whether or not we are successfully making contact with the ball.
 
-
+    public static bool lasthit_player_2 ;
     public Transform ball;
     Animator animator;
 
@@ -23,6 +23,7 @@ public class Player_2 : MonoBehaviour{
         aimTargetInitialPosition = aimTarget.position; // Set the initial position of the aim to the center
         shotManager = GetComponent<ShotManager>(); // Accessing the ShotManager component.
         currentShot = shotManager.topSpin; // Setting the default shot to topspin.
+        lasthit_player_2 = false;
     }
 
     void Update(){
@@ -70,6 +71,9 @@ public class Player_2 : MonoBehaviour{
 
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Ball")){ // If we make contact with the ball.
+
+            Debug.Log("player2" + lasthit_player_2);
+            lasthit_player_2 = true;
 
             Vector3 dir = aimTarget.position - transform.position; // Retrieve the direction in which we desire to direct the ball.
             other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);

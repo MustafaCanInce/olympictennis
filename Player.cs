@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour{
     public Transform aimTarget; // The goal at which we intend to land the ball.
 
-    
+    public static bool lasthit_player ;
 
     float speed = 3f; // Move speed.
     float force = 10; // Ball impact force.
@@ -24,10 +25,15 @@ public class Player : MonoBehaviour{
         aimTargetInitialPosition = aimTarget.position; // Set the initial position of the aim to the center (where it was placed in the editor).
         shotManager = GetComponent<ShotManager>(); // Accessing the ShotManager component.
         currentShot = shotManager.topSpin; // Setting the default shot to topspin.
-        
+        lasthit_player = false;
     }
 
     void Update(){
+
+        if (Input.GetKeyDown(KeyCode.Escape)) // Escape tuşuna basıldığında geçiş yap
+        {
+            SceneManager.LoadScene("Menu");
+        }
         
         float h = Input.GetAxisRaw("Horizontal"); // Retrieve the horizontal axis of the keyboard.
         float v = Input.GetAxisRaw("Vertical"); // Retrieve the vertical axis of the keyboard.
@@ -74,6 +80,9 @@ public class Player : MonoBehaviour{
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Ball")){ // If we make contact with the ball.
 
+            Debug.Log("player" + lasthit_player);
+            lasthit_player = true;
+            
             Vector3 dir = aimTarget.position - transform.position; // Retrieve the direction in which we desire to direct the ball.
             other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
             // Apply force to the ball, including an upward force corresponding to the type of shot being executed.
@@ -89,5 +98,7 @@ public class Player : MonoBehaviour{
 
         }
     }
+
+   
 
 }
