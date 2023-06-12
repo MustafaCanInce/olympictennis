@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class set2 : MonoBehaviour
 {
     Text pset2;
-    private int sett2;
-    private int temp2;
+    public static int sett2;
+    public static int temp2;
     void Start()
     {
         pset2 = GetComponent<Text>();

@@ -30,7 +30,7 @@ public class Player : MonoBehaviour{
 
     void Update(){
 
-        if (Input.GetKeyDown(KeyCode.Escape)) // Escape tuşuna basıldığında geçiş yap
+        if (Input.GetKeyDown(KeyCode.Escape)) 
         {
             SceneManager.LoadScene("Menu");
         }

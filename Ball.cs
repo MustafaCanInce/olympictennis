@@ -9,6 +9,8 @@ public class Ball : MonoBehaviour
     private GameObject player_2;
     private Vector3 initialPos; // The initial position of the ball.
     private AudioSource _audioSource;
+    public static bool point_1;
+    public static bool point_2;
     private bool hasCollided = false;
 
     private void Start()
@@ -38,7 +40,7 @@ public class Ball : MonoBehaviour
             GetComponent<Rigidbody>().velocity = Vector3.zero; // Set its velocity to 0 to prevent any further movement.
             transform.position = initialPos; // Reset its position.
             
-
+            
             
                  
                 if(Player.lasthit_player == true)
@@ -46,7 +48,7 @@ public class Ball : MonoBehaviour
                     Gamescore.scorevalue_player += 15; // Increase the score of the first player.
                     //Debug.Log("Do something here");
                     Player.lasthit_player = false;
-
+                    point_1 = true;
                     
 
 
@@ -56,6 +58,7 @@ public class Ball : MonoBehaviour
                     Gamescore_2.scorevalue_player_2 += 15; // Increase the score of the first player.
                     //Debug.Log("Do something here");
                     Player_2.lasthit_player_2 = false;
+                    point_2 = true;
                 }
                 
                     

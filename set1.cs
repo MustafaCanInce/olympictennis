@@ -4,11 +4,13 @@ using UnityEngine.UI;
 public class set1 : MonoBehaviour
 {
     Text pset1;
-    private int sett1;
-    private int temp1;
+     Text winText;
+    public static int sett1;
+    public static int temp1;
     void Start()
     {
         pset1 = GetComponent<Text>();
+        
         sett1 = 0;
         pset1.text = "0";
     }
@@ -21,6 +23,8 @@ public class set1 : MonoBehaviour
             sett1 = temp1;
             pset1.text = (sett1).ToString();
             Gamescore.scorevalue_player = 0;
+            
         }
+        
     } 
 }
