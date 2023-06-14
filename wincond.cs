@@ -20,12 +20,13 @@ public class wincond : MonoBehaviour
             {
                 win1.text = "Player1 win!"; 
                 Invoke("DelayedFunction", 4f);
-                
+                set1.temp1 = 0;
             }
         else if(set2.temp2 == 3)
             {
                 win1.text = "Player2 win!"; 
                 Invoke("DelayedFunction", 4f);
+                set2.temp2 = 0;
             }
     }
 

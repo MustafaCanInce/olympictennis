@@ -15,7 +15,7 @@ public class set2 : MonoBehaviour
     
     void Update()
     {
-        if (Gamescore_2.scorevalue_player_2 == 45)
+        if (Gamescore_2.scorevalue_player_2 == 55)
         {
             temp2 += 1;
             sett2 = temp2;
